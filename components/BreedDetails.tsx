@@ -1,3 +1,4 @@
+// components/BreedDetails.tsx
 import { Paper } from "@mui/material";
 
 interface Breed {
@@ -12,9 +13,9 @@ interface BreedData {
   breeds: Breed[];
 }
 
-export default function BreedDetails({ breedData }: { breedData: BreedData }) {
+export default function BreedDetails({ breedData }: { breedData: BreedData | null }) {
   if (!breedData || !breedData.breeds || breedData.breeds.length === 0) {
-    return <p>Not a valid ID (must be a valid abbreviation).</p>;
+    return <p style={{ color: "white", textAlign: "center", marginTop: "40px" }}>Not a valid ID (must be a valid abbreviation).</p>;
   }
 
   const breed = breedData.breeds[0];

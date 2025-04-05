@@ -1,15 +1,11 @@
+// app/breed/[breedId]/page.tsx
+
 import { fetchBreedData } from "@/lib/catApi";
 import BreedDetails from "@/components/BreedDetails";
 
-export const dynamic = "force-dynamic";
+type Params = { params: { breedId: string } };
 
-type PageProps = {
-  params: {
-    breedId: string;
-  };
-};
-
-export default async function BreedPage({ params }: PageProps) {
+export default async function Page({ params }: Params) {
   const breedData = await fetchBreedData(params.breedId);
 
   return (

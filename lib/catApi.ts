@@ -1,6 +1,19 @@
+// lib/catApi.ts
 import "server-only";
 
-export async function fetchBreedData(breedId: string) {
+interface Breed {
+  name: string;
+  origin: string;
+  temperament: string;
+  description: string;
+}
+
+interface BreedData {
+  url: string;
+  breeds: Breed[];
+}
+
+export async function fetchBreedData(breedId: string): Promise<BreedData | null> {
   const response = await fetch(
     `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`,
     {
@@ -12,9 +25,9 @@ export async function fetchBreedData(breedId: string) {
   );
 
   if (!response.ok) {
-    throw new Error("Failed to fetch breed data");
+    return null;
   }
 
   const data = await response.json();
-  return data[0];
+  return data[0] ?? null;
 }
