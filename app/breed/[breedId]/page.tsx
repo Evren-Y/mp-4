@@ -1,15 +1,16 @@
 import { fetchBreedData } from "@/lib/catApi";
 import BreedDetails from "@/components/BreedDetails";
 
-export default async function BreedPage(props: { params: { breedId: string } }) {
-  let breedData;
+export const dynamic = "force-dynamic";
 
-  try {
-    const breedDataResult = await fetchBreedData(props.params.breedId);
-    breedData = breedDataResult;
-  } catch (err) {
-    return <div>Error: {(err as Error).message}</div>;
-  }
+type Props = {
+  params: {
+    breedId: string;
+  };
+};
+
+export default async function BreedPage({ params }: Props) {
+  const breedData = await fetchBreedData(params.breedId);
 
   return (
     <div>
