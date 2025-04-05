@@ -3,9 +3,13 @@
 import { fetchBreedData } from "@/lib/catApi";
 import BreedDetails from "@/components/BreedDetails";
 
-type Params = { params: { breedId: string } };
+interface PageProps {
+  params: {
+    breedId: string;
+  };
+}
 
-export default async function Page({ params }: Params) {
+export default async function BreedPage({ params }: PageProps) {
   const breedData = await fetchBreedData(params.breedId);
 
   return (
