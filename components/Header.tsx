@@ -1,17 +1,23 @@
 import Link from "next/link";
 
 export default function Header() {
-    const linkStyling = "text 4xl font-semibold";
-    return (
-        <header className="p-4 bg-white">
-            <nav>
-                <Link href="/" className={linkStyling}>
-                    Home
-                </Link>
-                <Link href="/about" className={linkStyling}>
-                    About
-                </Link>
-            </nav>
-        </header>
-    );
+  return (
+    <header style={{
+      backgroundColor: '#222', 
+      color: 'white', 
+      padding: '15px 20px', 
+      display: 'flex', 
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    }}>
+      <Link href="/" style={{
+        color: 'white',
+        textDecoration: 'none',
+        fontSize: '1.5rem',
+        fontWeight: 'bold'
+      }}>
+        Cat Breed Explorer 🐱
+      </Link>
+    </header>
+  );
 }

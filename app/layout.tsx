@@ -7,9 +7,11 @@ export default function RootLayout(
 ){
   return (
     <html lang="en">
-      <body style={{'backgroundColor': 'maroon'}}>
+      <body style={{'backgroundColor': 'maroon', margin: 0, padding: 0}}>
         <Header />
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
