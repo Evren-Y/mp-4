@@ -1,5 +1,4 @@
 import { Paper } from "@mui/material";
-import Image from "next/image";
 
 interface Breed {
   name: string;
@@ -33,18 +32,15 @@ export default function BreedDetails({ breedData }: { breedData: BreedData }) {
       <h2 style={{ marginBottom: "16px" }}>{breed.name}</h2>
 
       {breedData.url && (
-        <Image
+        <img
           src={breedData.url}
           alt={breed.name}
-          width={500}
-          height={400}
           style={{
             borderRadius: "8px",
             marginBottom: "20px",
-            width: "100%",
+            maxWidth: "100%",
             height: "auto",
           }}
-          priority
         />
       )}
 

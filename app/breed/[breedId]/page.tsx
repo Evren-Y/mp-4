@@ -3,13 +3,13 @@ import BreedDetails from "@/components/BreedDetails";
 
 export const dynamic = "force-dynamic";
 
-type Props = {
+type PageProps = {
   params: {
     breedId: string;
   };
 };
 
-export default async function BreedPage({ params }: Props) {
+export default async function BreedPage({ params }: PageProps) {
   const breedData = await fetchBreedData(params.breedId);
 
   return (
