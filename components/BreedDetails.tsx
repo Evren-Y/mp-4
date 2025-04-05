@@ -1,8 +1,19 @@
-"use client";
-
 import { Paper } from "@mui/material";
+import Image from "next/image";
 
-export default function BreedDetails({ breedData }: { breedData: any }) {
+interface Breed {
+  name: string;
+  origin: string;
+  temperament: string;
+  description: string;
+}
+
+interface BreedData {
+  url: string;
+  breeds: Breed[];
+}
+
+export default function BreedDetails({ breedData }: { breedData: BreedData }) {
   if (!breedData || !breedData.breeds || breedData.breeds.length === 0) {
     return <p>Not a valid ID (must be a valid abbreviation).</p>;
   }
@@ -22,10 +33,18 @@ export default function BreedDetails({ breedData }: { breedData: any }) {
       <h2 style={{ marginBottom: "16px" }}>{breed.name}</h2>
 
       {breedData.url && (
-        <img
+        <Image
           src={breedData.url}
           alt={breed.name}
-          style={{ maxWidth: "100%", borderRadius: "8px", marginBottom: "20px" }}
+          width={500}
+          height={400}
+          style={{
+            borderRadius: "8px",
+            marginBottom: "20px",
+            width: "100%",
+            height: "auto",
+          }}
+          priority
         />
       )}
 
